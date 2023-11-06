@@ -37,16 +37,16 @@ async def handle_request(request: Request):
             if i['chapter_id']==chapter_number and i['verse_number']==sloka_number:
                 result=i['text']
                 print(i['text'])
-        result +="\n "+' \t Comment yes if you want a brief description \notherwise comment no'
+        # result +="\n "+' \t Comment yes if you want a brief description \notherwise comment no'
         # return JSONResponse(content={"fulfillmentText":result})
         return JSONResponse(content={"richContent": [
     [
       {
         "type": "description",
-        "title": "Description title",
+        "title": result,
         "text": [
-          "This is text line 1.",
-          "This is text line 2."
+            "Comment Yes if you want a description."
+          "Type `Show me next/previous verse ` if you want to know next/previous verse "
         ]
       }
     ]
