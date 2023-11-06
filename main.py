@@ -38,7 +38,20 @@ async def handle_request(request: Request):
                 result=i['text']
                 print(i['text'])
         result +="\n "+' \t Comment yes if you want a brief description \notherwise comment no'
-        return JSONResponse(content={"fulfillmentText":result})
+        # return JSONResponse(content={"fulfillmentText":result})
+        return JSONResponse(content={"richContent": [
+    [
+      {
+        "type": "description",
+        "title": "Description title",
+        "text": [
+          "This is text line 1.",
+          "This is text line 2."
+        ]
+      }
+    ]
+  ]})
+        
     if(intent == "shloka.search - yes"):
         # pass
         with open('commentary.json', encoding="utf8") as file:
