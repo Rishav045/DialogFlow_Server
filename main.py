@@ -167,9 +167,8 @@ async def handle_request(request: Request):
             if(global_chapter_number==i["chapter_number"] and global_sloka_number+1==i["verse_number"]):
                 result=i["text"]
         print(result)
-        result +="\n "+' \t Comment yes if you want a brief description \notherwise comment no'
+        # result +="\n "+' \t Comment yes if you want a brief description \notherwise comment no'
         global_sloka_number+=1
-        # return JSONResponse(content={"fulfillmentText":result})
         res = {}
         res['fulfillmentMessages'] = [
         {
@@ -225,7 +224,7 @@ async def handle_request(request: Request):
         for i in verses:
             if(global_chapter_number==i["chapter_number"] and global_sloka_number-1==i["verse_number"]):
                 result=i["text"]
-        result +="\n "+' \t Comment yes if you want a brief description \notherwise comment no'
+        # result +="\n "+' \t Comment yes if you want a brief description \notherwise comment no'
         
         print(result)
         global_sloka_number-=1
