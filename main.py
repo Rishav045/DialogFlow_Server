@@ -40,18 +40,37 @@ async def handle_request(request: Request):
         # result +="\n "+' \t Comment yes if you want a brief description \notherwise comment no'
         # return JSONResponse(content={"fulfillmentText":result})
         print("Checking the instance")
-        return JSONResponse(content={"richContent": [
+#         return JSONResponse(content={"richContent": [
+#     [
+#       {
+#         "type": "description",
+#         "title": result,
+#         "text": [
+#             "Comment Yes if you want a description."
+#           "Type `Show me next/previous verse ` if you want to know next/previous verse "
+#         ]
+#       }
+#     ]
+#   ]})
+        res = {}
+        res['fulfillmentMessages'] = [
+        {
+            'payload': {
+                "richContent": [
     [
       {
         "type": "description",
         "title": result,
-        "text": [
-            "Comment Yes if you want a description."
-          "Type `Show me next/previous verse ` if you want to know next/previous verse "
-        ]
+        "text": result
       }
     ]
-  ]})
+  ]
+            }
+        }
+    ]
+        return (
+         res
+        )
         
     if(intent == "shloka.search - yes"):
         # pass
