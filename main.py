@@ -169,7 +169,29 @@ async def handle_request(request: Request):
         print(result)
         result +="\n "+' \t Comment yes if you want a brief description \notherwise comment no'
         global_sloka_number+=1
-        return JSONResponse(content={"fulfillmentText":result})
+        # return JSONResponse(content={"fulfillmentText":result})
+        res = {}
+        res['fulfillmentMessages'] = [
+        {
+            'payload': {
+                "richContent": [
+    [
+      {
+        "type": "description",
+        "title": result,
+        "text":[
+            "Comment Yes if you want a description.",
+          "Type `Show me next/previous verse ` if you want to know next/previous verse "
+        ]
+      }
+    ]
+  ]
+            }
+        }
+    ]
+        return (
+         res
+        )
     
     
     
@@ -207,7 +229,29 @@ async def handle_request(request: Request):
         
         print(result)
         global_sloka_number-=1
-        return JSONResponse(content={"fulfillmentText":result})
+        # return JSONResponse(content={"fulfillmentText":result})
+        res = {}
+        res['fulfillmentMessages'] = [
+        {
+            'payload': {
+                "richContent": [
+    [
+      {
+        "type": "description",
+        "title": result,
+        "text":[
+            "Comment Yes if you want a description.",
+          "Type `Show me next/previous verse ` if you want to know next/previous verse "
+        ]
+      }
+    ]
+  ]
+            }
+        }
+    ]
+        return (
+         res
+        )
     
 
 
