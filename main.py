@@ -61,7 +61,10 @@ async def handle_request(request: Request):
       {
         "type": "description",
         "title": result,
-        "text": result
+        "text":[
+            "Comment Yes if you want a description."
+          "Type `Show me next/previous verse ` if you want to know next/previous verse "
+        ]
       }
     ]
   ]
