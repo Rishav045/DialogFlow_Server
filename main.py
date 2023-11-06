@@ -39,6 +39,7 @@ async def handle_request(request: Request):
                 print(i['text'])
         # result +="\n "+' \t Comment yes if you want a brief description \notherwise comment no'
         # return JSONResponse(content={"fulfillmentText":result})
+        print("Checking the instance")
         return JSONResponse(content={"richContent": [
     [
       {
