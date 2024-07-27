@@ -25,7 +25,7 @@ async def handle_request(request: Request):
         sloka_number=parameters['sloka-number']
         print(type(sloka_number[0]))
         whole = int(sloka_number[0])
-        decimal = int(round((number - whole) * 100))
+        decimal = int(round((sloka_number[0] - whole) * 100))
         chapter_number = parameters['chapter-number']
         sloka_number=(int(sloka_number[0]))
         if (decimal!=0):
