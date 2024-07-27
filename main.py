@@ -23,6 +23,7 @@ async def handle_request(request: Request):
         # pass
         parameters= payload['queryResult']['parameters']
         sloka_number=parameters['sloka-number']
+        print(type(sloka_number))
         whole = int(sloka_number)
         decimal = int(round((number - whole) * 100))
         chapter_number = parameters['chapter-number']
