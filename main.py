@@ -18,11 +18,16 @@ async def handle_request(request: Request):
     
     
     print(intent)
+
     if(intent == "shloka.search"):
         # pass
         parameters= payload['queryResult']['parameters']
         sloka_number=parameters['sloka-number']
+        whole = int(sloka_number)
+        decimal = int(round((number - whole) * 100))
         chapter_number = parameters['chapter-number']
+        if (decimal!=0):
+            sloka_number=decimal
         with open('verse.json', encoding="utf8") as file:
             data = json.load(file)
         sloka_number=(int(sloka_number[0]))
@@ -62,6 +67,52 @@ async def handle_request(request: Request):
         return (
          res
         )
+        
+
+#     if(intent == "shloka.search"):
+#         # pass
+#         parameters= payload['queryResult']['parameters']
+#         sloka_number=parameters['sloka-number']
+#         chapter_number = parameters['chapter-number']
+#         with open('verse.json', encoding="utf8") as file:
+#             data = json.load(file)
+#         sloka_number=(int(sloka_number[0]))
+#         global global_sloka_number
+#         global_sloka_number=sloka_number
+#         chapter_number=(int(chapter_number[0]))
+#         global global_chapter_number
+#         global_chapter_number=chapter_number
+#         print(global_chapter_number,global_sloka_number)
+#         result=""
+#         for i in data:
+#             if i['chapter_id']==chapter_number and i['verse_number']==sloka_number:
+#                 result=i['text']
+#                 print(i['text'])
+                
+#         print("Checking the instance")
+# #      
+#         res = {}
+#         res['fulfillmentMessages'] = [
+#         {
+#             'payload': {
+#                 "richContent": [
+#     [
+#       {
+#         "type": "description",
+#         "title": result,
+#         "text":[
+#             "Comment Yes if you want a description.",
+#           "Type `Show me next/previous verse ` if you want to know next/previous verse "
+#         ]
+#       }
+#     ]
+#   ]
+#             }
+#         }
+#     ]
+#         return (
+#          res
+#         )
         
     if(intent == "shloka.search - yes"):
         # pass
