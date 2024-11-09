@@ -13,6 +13,7 @@ global_chapter_summary=0
 @app.post("/")
 async def handle_request(request: Request):
     payload= await request.json()
+    print(payload)
 
     intent = payload['queryResult']['intent']['displayName']
     
